@@ -1,2 +1,1 @@
-st = ['我愛羅','def']
-print( '我' in st)
+print('This is a \033[1;35m test \033[0m!')

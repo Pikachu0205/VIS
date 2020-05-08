@@ -1,20 +1,22 @@
 import jieba
+from opencc import OpenCC
+jieba.load_userdict('./CondorHeroes/output/dict.txt')
+s2t = OpenCC('s2t')
 
-text = """忽忽數年，郭芙已滿九歲了。黃蓉記掛父親，與郭靖要出島尋訪，柯鎮惡說甚麼也要一起去，郭芙自也磨著非同去不可。四人離島之後，談到行程，柯鎮惡說道：“甚麼地方都好，就是嘉興不去。”黃蓉笑道：“大師父，好教你得知，那些債主我早給你打發了。 ”柯鎮惡大喜之下，首先便去嘉興。
+with open('CondorHeroes/output/fightDict.txt', 'r') as dict_file:
+    fight_dict = dict_file.readlines()
+    for i in range(1, 41):
+        chapter = str(i) +'.txt'
+        with open('./CondorHeroes/'+ chapter, 'r', encoding='utf-8') as in_file:
+            textLines = in_file.readlines()
+            for line in textLines:
+                if line == '\n':
+                    continue
+                wordList = jieba.cut(line)
 
-　　到得嘉興，四人宿在客店之中。柯鎮惡向故舊打聽，有人說前數日曾見到一個青袍老人獨自在煙雨樓頭喝酒，說起形貌，似乎便是黃藥師的模樣。郭靖、黃蓉大喜，便在嘉興城鄉到處尋訪。這日清晨，柯鎮惡帶著郭芙，攜了雙雕到樹林中玩，不意湊巧碰到了武修文。
-
-柯鎮惡與李莫愁交手數合，就知不是她的對手，心想：“這女魔頭武功之高，竟似不亞於當年的梅超風。”當下展開伏魔杖法，緊緊守住門戶。李莫愁心中暗贊：“曾聽陸郎這沒良心的小子言道，他嘉興前輩人物中有江南七怪，武功甚是不弱，收下一個徒兒大大有名，便是大俠郭靖。這老兒是江南七怪之首，果然名不虛傳。他盲目跛足，年老力衰，居然還接得了我十餘招。”只聽陸氏夫婦大聲呼喝，與武三娘已攻到身後，心中主意已定：“要傷柯老頭不難，但惹得郭氏夫婦找上門來，卻是難鬥，今日放他一馬便是。”拂塵一揚，銀絲鼓勁挺直，就似一柄花槍般向柯鎮惡當胸剌去。這拂塵絲雖是柔軟之物，但藉著一股巧勁，所指處又是要害大穴，這一剌之勢卻也頗為厲害。
-
-　　柯鎮惡鐵杖在地下一頓，借勢後躍。李莫愁踏上一步，似是進招追擊，那知斗然間疾向後仰。她腰肢柔軟之極，翻身後仰，肩膀離武三娘已不及二尺。武三娘吃了一驚，急揮左掌向她額頭拍去。李莫愁腰肢輕擺，就如一朵菊花在風中微微一顫，早已避開，拍的一下，陸二娘小腹上已然中掌。
-"""
-
-segList = jieba.cut(text)
-# print(' '.join(list(segList)))
-
-with open('./CondorHeroes/output/demoDict.txt','r',encoding='utf-8') as dict_file:
-    dict = dict_file.readlines()
-    print(dict)
-    for term in segList:
-        if term+'\n' in dict:
-            print(term)
+                for word in wordList:
+                    word = s2t.convert(word)
+                    if word+'\n' in fight_dict:
+                        print('\033[1;35m' + word + '\033[0m', end=' ')
+                        continue
+                    print(word, end=' ')
