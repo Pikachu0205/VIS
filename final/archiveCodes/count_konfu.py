@@ -5,9 +5,9 @@ tt = OpenCC('s2t')
 
 
 jieba.load_userdict('./CondorHeroes/output/dict.txt')
-with open('./CondorHeroes/output/konfu_all.txt','r',encoding='utf-8') as file:
+with open('../CondorHeroes/output/konfu_all.txt', 'r', encoding='utf-8') as file:
     konfuList = file.read().splitlines()
-    with open('./CondorHeroes/1.txt', 'r', encoding='utf-8') as in_file:
+    with open('../CondorHeroes/rawFiles/1.txt', 'r', encoding='utf-8') as in_file:
             # open('./CondorHeroes/output/konfuList.txt', 'a', encoding='utf-8') as out_file:
         # line = in_file.readline()
         # while line:
