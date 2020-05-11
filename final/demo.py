@@ -10,7 +10,7 @@ with open('CondorHeroes/output/fightDict.txt', 'r',encoding='utf-8') as dict_fil
     # 章節
     for i in range(1, 41):
         chapter = str(i) +'.txt'
-        with open('./CondorHeroes/newFiles/'+ chapter, 'r',encoding='utf-8') as in_file, open('./CondorHeroes/output/statistics/' + chapter,'a', encoding='utf-8') as out_file:
+        with open('./CondorHeroes/newFiles/'+ chapter, 'r',encoding='utf-8') as in_file, open('./CondorHeroes/output/statistics/' + str(i) + '.csv','a', encoding='utf-8') as out_file:
             textLines = in_file.readlines()
 
             # 行
@@ -37,5 +37,5 @@ with open('CondorHeroes/output/fightDict.txt', 'r',encoding='utf-8') as dict_fil
                 print(fightTerms, terms)
 
                 # 文件輸出
-                writeLine = str(fightTerms)+' '+str(terms)+'\n'
+                writeLine = str(fightTerms)+','+str(terms)+'\n'
                 out_file.write(writeLine)
