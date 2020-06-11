@@ -4,7 +4,7 @@ s2t = OpenCC('s2t')
 
 for i in range(2, 41):
     file = str(i)+'.txt'
-    with open('./CondorHeroes/'+ file, 'r', encoding='utf-8') as in_file, open('./CondorHeroes/newFiles/'+ file, 'a', encoding='utf-8') as out_file:
+    with open('./CondorHeroes/'+ file, 'r', encoding='utf-8') as in_file, open('./CondorHeroes/Stories/'+ file, 'a', encoding='utf-8') as out_file:
         line = in_file.readline()
         while line:
             if line == '\n':
