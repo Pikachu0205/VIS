@@ -41,7 +41,7 @@ with open('CondorHeroes/source/fightDict.txt', 'r', encoding='utf-8') as dict_fi
 
                 # 文件輸出
                 if terms == 100:
-                    writeLine = str(fightTerms) + ',' + str(terms) + '\n'
+                    writeLine = str(fightTerms) + '\n'
                     out_file.write(writeLine)
                     terms = 0
                     fightTerms = 0

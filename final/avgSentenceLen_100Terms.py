@@ -44,7 +44,7 @@ for i in range(1, 41):
             if terms == 100:
                 try:
                     print('\033[1;35m' + str(round(statistics.mean(sentenceLenList)))+ '\033[0m')
-                    writeLine = str(round(statistics.mean(sentenceLenList))) + ',' + str(terms) + '\n'
+                    writeLine = str(round(statistics.mean(sentenceLenList))) + '\n'
                     out_file.write(writeLine)
                 except statistics.StatisticsError:
                     pass
