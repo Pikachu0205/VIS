@@ -1,10 +1,10 @@
 import jieba
 
 # 自訂字典
-jieba.load_userdict('./CondorHeroes/output/dict.txt')
+jieba.load_userdict('./CondorHeroes/source/dict.txt')
 
 # 打鬥詞
-with open('CondorHeroes/output/fightDict.txt', 'r', encoding='utf-8') as dict_file:
+with open('CondorHeroes/source/fightDict.txt', 'r', encoding='utf-8') as dict_file:
     fight_dict = dict_file.readlines()
 
     # 章節
